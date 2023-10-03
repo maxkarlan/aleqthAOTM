@@ -50,11 +50,18 @@
 <div id="imageContainer"
      onmousemove="revealCircle(event)"
 		 onmouseleave="restoreClip()">
-    <img id="topImage" src="upper-image.jpg" alt="Top Image" ondblclick="swapZIndex()">
-    <img id="bottomImage" src="lower-image.jpg" alt="Bottom Image" ondblclick="swapZIndex()">
+    <img id="topImage" src="upper-image.jpg" alt="Top Image" style="z-index: 0;" ondblclick="swapZIndex()">
+    <img id="bottomImage" src="lower-image.jpg" alt="Bottom Image" style="z-index: 1;" ondblclick="swapZIndex()">
 </div>
 
 <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Configures the clip-path on the top image when the page loads
+    const topImage = document.getElementById('topImage');
+    topImage.style.clipPath = 'circle(100% at 50% 50%)';
+});
+  
 function swapZIndex() {
     const topImage = document.getElementById('topImage');
     const bottomImage = document.getElementById('bottomImage');
